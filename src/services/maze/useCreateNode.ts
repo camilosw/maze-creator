@@ -1,11 +1,7 @@
 import { useRecoilCallback } from 'recoil';
 
-import {
-  activeNodeAtom,
-  activeNodeIdAtom,
-  nodeAtom,
-  nodesAtom,
-} from 'services/maze';
+import { configAtom } from 'services/config';
+import { activeNodeAtom, nodeAtom, nodesAtom } from 'services/maze';
 import { startNodeAtom } from './startNodeAtom';
 import { MazeNode } from './types';
 
@@ -14,9 +10,18 @@ export const useCreateNode = () => {
     ({ set, snapshot }) =>
       (x: number, y: number) => {
         const id = `${x}-${y}`;
-        const activeNodeId = snapshot.getLoadable(activeNodeIdAtom).getValue();
+        const activeNode = snapshot.getLoadable(activeNodeAtom).getValue();
+        const config = snapshot.getLoadable(configAtom).getValue();
 
-        const connections = activeNodeId ? [activeNodeId] : [];
+        if (
+          activeNode &&
+          Math.hypot(Math.abs(x - activeNode.x), Math.abs(y - activeNode.y)) >
+            config.gridSpacing
+        ) {
+          return;
+        }
+
+        const connections = activeNode ? [activeNode.id] : [];
         const isStart = !snapshot.getLoadable(nodesAtom).getValue().length;
         const newNode: MazeNode = {
           id,
@@ -29,8 +34,8 @@ export const useCreateNode = () => {
 
         set(nodesAtom, (nodes) => [...nodes, id]);
         set(nodeAtom(id), newNode);
-        if (activeNodeId) {
-          set(nodeAtom(activeNodeId), (node) => ({
+        if (activeNode) {
+          set(nodeAtom(activeNode.id), (node) => ({
             ...node,
             connections: [...node.connections, id],
           }));
