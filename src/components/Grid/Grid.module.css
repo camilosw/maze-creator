@@ -1,0 +1,7 @@
+.dot {
+  fill: blue;
+  opacity: 0;
+}
+.dot:hover {
+  opacity: 0.5;
+}
