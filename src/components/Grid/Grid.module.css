@@ -1,6 +1,7 @@
 .dot {
   fill: blue;
   opacity: 0;
+  transition: opacity 0.25s ease;
 }
 .dot:hover {
   opacity: 0.5;

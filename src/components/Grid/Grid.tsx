@@ -22,7 +22,7 @@ const Grid = () => {
     <>
       {points.flat().map((point, index) => (
         <Fragment key={index}>
-          <circle cx={point.x} cy={point.y} r="1" />
+          <circle cx={point.x} cy={point.y} r="1" fill="#78909C" />
           <circle
             cx={point.x}
             cy={point.y}
