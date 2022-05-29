@@ -1,0 +1,30 @@
+.label {
+  display: grid;
+  grid-template-columns: 1rem auto;
+  gap: 0.25rem;
+  align-items: center;
+}
+.label input[type='checkbox'] {
+  appearance: none;
+  background-color: #fff;
+  font: inherit;
+  color: currentColor;
+  width: 1rem;
+  height: 1rem;
+  border: 0.125rem solid currentColor;
+  border-radius: 0.25rem;
+  display: grid;
+  place-content: center;
+}
+.label input[type='checkbox']::before {
+  content: '';
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 0.125rem;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--black);
+}
+.label input[type='checkbox']:checked::before {
+  transform: scale(1);
+}

@@ -5,6 +5,9 @@
 .node:hover {
   filter: drop-shadow(0 0 0.25rem rgba(0, 0, 0, 0.5));
 }
+.hide {
+  fill: none;
+}
 .active {
   fill: #ff7043;
   stroke: #ffffff;

@@ -1,11 +1,12 @@
 import { Fragment } from 'react';
 import { useRecoilValue } from 'recoil';
 
-import { configAtom } from 'services/config';
+import { configAtom, layersAtom } from 'services/config';
 import { useCreateNode } from 'services/maze';
 import cn from './Grid.module.css';
 
 const Grid = () => {
+  const { dots } = useRecoilValue(layersAtom);
   const { width, height, gridSpacing } = useRecoilValue(configAtom);
   const createNode = useCreateNode();
 
@@ -22,7 +23,7 @@ const Grid = () => {
     <>
       {points.flat().map((point, index) => (
         <Fragment key={index}>
-          <circle cx={point.x} cy={point.y} r="1" fill="#78909C" />
+          {dots && <circle cx={point.x} cy={point.y} r="1" fill="#78909C" />}
           <circle
             cx={point.x}
             cy={point.y}

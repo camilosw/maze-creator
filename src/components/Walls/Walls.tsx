@@ -1,10 +1,14 @@
 import React from 'react';
 import { useRecoilValue } from 'recoil';
 
+import { layersAtom } from 'services/config';
 import { wallsSelector } from 'services/maze/wallsSelector';
 
 const Walls = () => {
+  const { walls: wallsLayer } = useRecoilValue(layersAtom);
   const walls = useRecoilValue(wallsSelector);
+
+  if (!wallsLayer) return null;
 
   return (
     <>

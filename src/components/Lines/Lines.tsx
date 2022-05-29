@@ -1,9 +1,13 @@
 import { useRecoilValue } from 'recoil';
 
+import { layersAtom } from 'services/config';
 import { linesSelector } from 'services/maze';
 
 const Lines = () => {
+  const { paths } = useRecoilValue(layersAtom);
   const lines = useRecoilValue(linesSelector);
+
+  if (!paths) return null;
 
   return (
     <>

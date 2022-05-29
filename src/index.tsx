@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RecoilRoot } from 'recoil';
 
+import Layers from 'components/Layers';
 import Maze from 'components/Maze';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
@@ -12,6 +13,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <RecoilRoot>
+      <Layers />
       <Maze />
     </RecoilRoot>
   </React.StrictMode>,
