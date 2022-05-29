@@ -7,16 +7,13 @@ export const statsSelector = selector({
   get: ({ get }) => {
     const nodes = get(nodesSelector);
 
-    const branches = nodes.reduce(
-      (acc, node) =>
-        acc +
-        Math.max(
-          0,
-          node.connections.length -
-            (node.isStart && node.connections.length > 1 ? 0 : 2),
-        ),
-      0,
-    );
+    const branches = nodes.reduce((acc, node) => {
+      const connections = node.connections.length;
+      if (node.isStart) {
+        return acc + (connections > 1 ? connections : 0);
+      }
+      return acc + (connections > 2 ? connections - 1 : 0);
+    }, 0);
 
     return {
       branches,
