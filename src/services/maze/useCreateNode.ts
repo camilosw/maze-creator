@@ -2,7 +2,7 @@ import { useRecoilCallback } from 'recoil';
 
 import { configAtom } from 'services/config';
 import { activeNodeAtom, nodeAtom, nodesAtom } from 'services/maze';
-import { startNodeAtom } from './startNodeAtom';
+import { startNodeIdAtom } from './startNodeAtom';
 import { MazeNode } from './types';
 
 export const useCreateNode = () => {
@@ -30,6 +30,7 @@ export const useCreateNode = () => {
           connections,
           isActive: true,
           isStart: isStart,
+          isEnd: false,
         };
 
         set(nodesAtom, (nodes) => [...nodes, id]);
@@ -43,7 +44,7 @@ export const useCreateNode = () => {
 
         set(activeNodeAtom, newNode);
         if (isStart) {
-          set(startNodeAtom, id);
+          set(startNodeIdAtom, id);
         }
       },
     [],

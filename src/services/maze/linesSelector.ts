@@ -47,9 +47,8 @@ export const linesSelector = selector({
   key: 'lines',
   get: ({ get }) => {
     get(nodesAtom);
-    const currentNodeId = get(startNodeAtom);
-    if (currentNodeId) {
-      const currentNode = get(nodeAtom(currentNodeId));
+    const currentNode = get(startNodeAtom);
+    if (currentNode) {
       return makeLine(currentNode, get);
     }
   },

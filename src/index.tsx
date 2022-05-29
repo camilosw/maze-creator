@@ -5,6 +5,7 @@ import { RecoilRoot } from 'recoil';
 import Layers from 'components/Layers';
 import Maze from 'components/Maze';
 import Stats from 'components/Stats';
+import Toolbar from 'components/Toolbar';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 
@@ -14,6 +15,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <RecoilRoot>
+      <Toolbar />
       <Layers />
       <Stats />
       <Maze />

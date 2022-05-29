@@ -5,4 +5,5 @@ export type MazeNode = {
   connections: string[];
   isActive: boolean;
   isStart: boolean;
+  isEnd: boolean;
 };
