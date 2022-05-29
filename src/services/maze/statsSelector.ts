@@ -17,6 +17,7 @@ export const statsSelector = selector({
 
     return {
       branches,
+      nodes: nodes.length,
     };
   },
 });

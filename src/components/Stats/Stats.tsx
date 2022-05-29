@@ -9,6 +9,7 @@ const Stats = () => {
   return (
     <div>
       Stats
+      <div>Nodes: {stats.nodes}</div>
       <div>Branches: {stats.branches}</div>
     </div>
   );
