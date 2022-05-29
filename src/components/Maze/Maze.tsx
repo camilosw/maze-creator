@@ -3,6 +3,7 @@ import { useRecoilValue } from 'recoil';
 import Grid from 'components/Grid';
 import Lines from 'components/Lines';
 import Nodes from 'components/Nodes';
+import Walls from 'components/Walls';
 import { configAtom } from 'services/config';
 
 const Maze = () => {
@@ -13,6 +14,7 @@ const Maze = () => {
       <Grid />
       <Lines />
       <Nodes />
+      <Walls />
     </svg>
   );
 };

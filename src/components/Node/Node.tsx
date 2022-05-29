@@ -19,7 +19,6 @@ const Node = ({ id }: Props) => {
         cx={node.x}
         cy={node.y}
         r={id === startNode ? 6 : 3}
-        fill="#455A64"
         className={cns(cn.node, {
           [cn.active]: node.isActive,
         })}
