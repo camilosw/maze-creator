@@ -14,10 +14,10 @@ const Layers = () => {
   return (
     <div>
       <Checkbox
-        label="dots"
-        name="dots"
-        checked={layers.dots}
-        onChange={() => handleOnChange('dots')}
+        label="grid"
+        name="grid"
+        checked={layers.grid}
+        onChange={() => handleOnChange('grid')}
       />
       <Checkbox
         label="walls"
@@ -30,6 +30,12 @@ const Layers = () => {
         name="paths"
         checked={layers.paths}
         onChange={() => handleOnChange('paths')}
+      />
+      <Checkbox
+        label="nodes"
+        name="nodePoints"
+        checked={layers.nodePoints}
+        onChange={() => handleOnChange('nodePoints')}
       />
     </div>
   );

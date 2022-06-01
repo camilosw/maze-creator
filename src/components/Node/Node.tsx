@@ -10,7 +10,7 @@ type Props = {
 };
 
 const Node = ({ id }: Props) => {
-  const { paths } = useRecoilValue(layersAtom);
+  const { nodePoints } = useRecoilValue(layersAtom);
   const node = useRecoilValue(nodeAtom(id));
   const setActiveNode = useSetRecoilState(activeNodeAtom);
 
@@ -22,7 +22,7 @@ const Node = ({ id }: Props) => {
         r={node.isStart || node.isEnd ? 6 : 3}
         className={cns(cn.node, {
           [cn.active]: node.isActive,
-          [cn.hide]: !paths,
+          [cn.hide]: !nodePoints,
         })}
       />
 

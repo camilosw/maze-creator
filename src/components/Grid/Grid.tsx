@@ -6,7 +6,7 @@ import { useCreateNode } from 'services/maze';
 import cn from './Grid.module.css';
 
 const Grid = () => {
-  const { dots } = useRecoilValue(layersAtom);
+  const { grid } = useRecoilValue(layersAtom);
   const { width, height, gridSpacing } = useRecoilValue(configAtom);
   const createNode = useCreateNode();
 
@@ -23,7 +23,7 @@ const Grid = () => {
     <>
       {points.flat().map((point, index) => (
         <Fragment key={index}>
-          {dots && <circle cx={point.x} cy={point.y} r="1" fill="#78909C" />}
+          {grid && <circle cx={point.x} cy={point.y} r="1" fill="#78909C" />}
           <circle
             cx={point.x}
             cy={point.y}
