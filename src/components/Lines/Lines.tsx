@@ -16,7 +16,7 @@ const Lines = () => {
           key={`${line.x1}${line.y1}${line.x2}${line.y2}`}
           {...line}
           stroke={line.color}
-          strokeWidth="2"
+          strokeWidth={line.width}
         />
       ))}
     </>

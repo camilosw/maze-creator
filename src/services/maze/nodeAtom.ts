@@ -12,5 +12,6 @@ export const nodeAtom = atomFamily<MazeNode, string>({
     isActive: false,
     isStart: false,
     isEnd: false,
+    isExitPath: false,
   },
 });

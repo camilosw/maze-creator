@@ -6,4 +6,6 @@ export * from './nodesAtom';
 export * from './nodesSelector';
 export * from './startNodeAtom';
 export * from './types';
+export * from './useCalculateExitPath';
+export * from './useClearPath';
 export * from './useCreateNode';

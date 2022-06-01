@@ -11,6 +11,7 @@ type Line = {
   x2: number;
   y2: number;
   color: string;
+  width: number;
 };
 
 const makeLine = (
@@ -35,6 +36,7 @@ const makeLine = (
         x2: nextNode.x,
         y2: nextNode.y,
         color: getColorId(nextColorId),
+        width: nextNode.isExitPath ? 4 : 2,
       };
       return [...nextLines, line];
     })

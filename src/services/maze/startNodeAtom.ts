@@ -1,6 +1,5 @@
 import { atom, DefaultValue, selector } from 'recoil';
 
-import { activeNodeIdAtom } from './activeNodeAtom';
 import { nodeAtom } from './nodeAtom';
 import { MazeNode } from './types';
 
@@ -12,7 +11,7 @@ export const startNodeIdAtom = atom<string | null>({
 export const startNodeAtom = selector<MazeNode | null>({
   key: 'startNode',
   get: ({ get }) => {
-    const startNodeId = get(activeNodeIdAtom);
+    const startNodeId = get(startNodeIdAtom);
     if (startNodeId) {
       return get(nodeAtom(startNodeId));
     }

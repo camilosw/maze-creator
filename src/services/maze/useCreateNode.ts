@@ -31,6 +31,7 @@ export const useCreateNode = () => {
           isActive: true,
           isStart: isStart,
           isEnd: false,
+          isExitPath: false,
         };
 
         set(nodesAtom, (nodes) => [...nodes, id]);

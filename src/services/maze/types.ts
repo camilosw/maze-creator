@@ -6,4 +6,5 @@ export type MazeNode = {
   isActive: boolean;
   isStart: boolean;
   isEnd: boolean;
+  isExitPath: boolean;
 };
