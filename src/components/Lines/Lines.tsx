@@ -17,7 +17,7 @@ const Lines = () => {
           {...line}
           stroke={line.color}
           strokeWidth={line.width}
-          stroke-linecap="round"
+          strokeLinecap="round"
         />
       ))}
     </>
