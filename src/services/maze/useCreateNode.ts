@@ -44,6 +44,15 @@ export const useCreateNode = () => {
           nodeCoordinates = [[x, y]];
         }
 
+        const intersectPath = nodeCoordinates.find(([nextX, nextY]) => {
+          const node = snapshot
+            .getLoadable(nodeAtom(`${nextX}-${nextY}`))
+            .getValue();
+          if (node.x === nextX && node.y === nextY) return true;
+        });
+
+        if (intersectPath) return;
+
         const isStart = !snapshot.getLoadable(nodesAtom).getValue().length;
 
         const nodes = nodeCoordinates.map(([nextX, nextY], index) => {
