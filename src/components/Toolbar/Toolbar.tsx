@@ -5,6 +5,7 @@ import {
   activeNodeAtom,
   endNodeAtom,
   startNodeAtom,
+  useCalculateDepth,
   useCalculateExitPath,
   useClearPath,
 } from 'services/maze';
@@ -15,10 +16,12 @@ const Toolbar = () => {
   const activeNode = useRecoilValue(activeNodeAtom);
   const clearPath = useClearPath();
   const calculateExitPath = useCalculateExitPath();
+  const calculateDepth = useCalculateDepth();
 
   const setStart = () => {
     if (!activeNode) return;
     setStartNode(activeNode);
+    calculateDepth();
     clearPath();
     calculateExitPath();
   };

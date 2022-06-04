@@ -66,6 +66,7 @@ export const useCreateNode = () => {
             isStart: isStart && !index,
             isEnd: false,
             isExitPath: false,
+            depth: index + 1 + (activeNode?.depth ?? 0),
           };
 
           return node;
