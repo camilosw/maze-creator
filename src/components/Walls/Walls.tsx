@@ -4,11 +4,8 @@ import { useRecoilValue } from 'recoil';
 import { layersAtom } from 'services/config';
 import { wallsSelector } from 'services/maze/wallsSelector';
 
-const Walls = () => {
-  const { walls: wallsLayer } = useRecoilValue(layersAtom);
+const DrawWalls = () => {
   const walls = useRecoilValue(wallsSelector);
-
-  if (!wallsLayer) return null;
 
   return (
     <>
@@ -21,10 +18,19 @@ const Walls = () => {
           y2={wall[3]}
           strokeWidth="2"
           stroke="#212121"
+          strokeLinecap="round"
         />
       ))}
     </>
   );
+};
+
+const Walls = () => {
+  const { walls: wallsLayer } = useRecoilValue(layersAtom);
+
+  if (!wallsLayer) return null;
+
+  return <DrawWalls />;
 };
 
 export default Walls;

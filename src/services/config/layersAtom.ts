@@ -5,6 +5,7 @@ type Layers = {
   walls: boolean;
   nodePoints: boolean;
   paths: boolean;
+  depth: boolean;
 };
 
 export const layersAtom = atom<Layers>({
@@ -14,5 +15,6 @@ export const layersAtom = atom<Layers>({
     walls: true,
     nodePoints: true,
     paths: true,
+    depth: false,
   },
 });

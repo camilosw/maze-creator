@@ -46,12 +46,12 @@ const makeLine = (
 };
 
 export const linesSelector = selector({
-  key: 'lines',
+  key: 'linesSelector',
   get: ({ get }) => {
     get(nodesAtom);
-    const currentNode = get(startNodeAtom);
-    if (currentNode) {
-      return makeLine(currentNode, get);
+    const startNode = get(startNodeAtom);
+    if (startNode) {
+      return makeLine(startNode, get);
     }
   },
 });

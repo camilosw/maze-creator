@@ -37,6 +37,13 @@ const Layers = () => {
         checked={layers.nodePoints}
         onChange={() => handleOnChange('nodePoints')}
       />
+      <h2>Descriptors</h2>
+      <Checkbox
+        label="Depth"
+        name="depth"
+        checked={layers.depth}
+        onChange={() => handleOnChange('depth')}
+      />
     </div>
   );
 };

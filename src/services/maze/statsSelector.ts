@@ -3,7 +3,7 @@ import { selector } from 'recoil';
 import { nodesSelector } from './nodesSelector';
 
 export const statsSelector = selector({
-  key: 'stats',
+  key: 'statsSelector',
   get: ({ get }) => {
     const nodes = get(nodesSelector);
 

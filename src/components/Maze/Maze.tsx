@@ -1,5 +1,6 @@
 import { useRecoilValue } from 'recoil';
 
+import Depth from 'components/Depth';
 import Grid from 'components/Grid';
 import Lines from 'components/Lines';
 import Nodes from 'components/Nodes';
@@ -12,6 +13,7 @@ const Maze = () => {
   return (
     <svg width={config.width} height={config.height}>
       <Grid />
+      <Depth />
       <Lines />
       <Nodes />
       <Walls />
