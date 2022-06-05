@@ -10,6 +10,8 @@ export const useCreateNode = () => {
     ({ set, snapshot }) =>
       (x: number, y: number) => {
         const activeNode = snapshot.getLoadable(activeNodeAtom).getValue();
+        const nodesCount = snapshot.getLoadable(nodesAtom).getValue().length;
+        if (!activeNode && nodesCount) return;
 
         let nodeCoordinates: [number, number][] = [];
 
@@ -49,11 +51,12 @@ export const useCreateNode = () => {
             .getLoadable(nodeAtom(`${nextX}-${nextY}`))
             .getValue();
           if (node.x === nextX && node.y === nextY) return true;
+          return false;
         });
 
         if (intersectPath) return;
 
-        const isStart = !snapshot.getLoadable(nodesAtom).getValue().length;
+        const isStart = !nodesCount;
 
         const nodes = nodeCoordinates.map(([nextX, nextY], index) => {
           const id = `${nextX}-${nextY}`;
