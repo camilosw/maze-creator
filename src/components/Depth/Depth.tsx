@@ -1,23 +1,32 @@
 import React from 'react';
+import chroma from 'chroma-js';
 import { useRecoilValue } from 'recoil';
 
 import { configAtom, layersAtom } from 'services/config';
-import { depthSelector } from 'services/maze';
+import { nodesSelector } from 'services/maze';
 
 const DepthDraw = () => {
-  const depthNodes = useRecoilValue(depthSelector);
+  const nodes = useRecoilValue(nodesSelector);
   const { gridSpacing } = useRecoilValue(configAtom);
+
+  const biggestDepth = nodes.reduce(
+    (acc, node) => Math.max(node.depth, acc),
+    0,
+  );
+  const colorScale = chroma
+    .scale(['#0277BD', '#F44336'])
+    .domain([1, biggestDepth]);
 
   return (
     <>
-      {depthNodes?.map((node) => (
+      {nodes?.map((node) => (
         <rect
           key={`${node.x}${node.y}`}
-          x={node.x}
-          y={node.y}
+          x={node.x - gridSpacing / 2}
+          y={node.y - gridSpacing / 2}
           width={gridSpacing}
           height={gridSpacing}
-          fill={node.color}
+          fill={colorScale(node.depth).hex()}
           shapeRendering="crispEdges"
         />
       ))}
