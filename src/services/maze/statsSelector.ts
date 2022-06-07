@@ -21,10 +21,18 @@ export const statsSelector = selector({
       0,
     );
 
+    const deadEnds = nodes.reduce(
+      (acc, node) =>
+        acc +
+        Number(node.connections.length === 1 && !node.isStart && !node.isEnd),
+      0,
+    );
+
     return {
       branches,
       nodes: nodes.length,
       junctions,
+      deadEnds,
     };
   },
 });

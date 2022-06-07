@@ -11,6 +11,7 @@ const Stats = () => {
       Stats
       <div>Junctions: {stats.junctions}</div>
       <div>Branches: {stats.branches}</div>
+      <div>Dead ends: {stats.deadEnds}</div>
       <div>Nodes: {stats.nodes}</div>
     </div>
   );
