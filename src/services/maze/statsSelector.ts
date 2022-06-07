@@ -15,9 +15,16 @@ export const statsSelector = selector({
       return acc + (connections > 2 ? connections - 1 : 0);
     }, 0);
 
+    const junctions = nodes.reduce(
+      (acc, node) =>
+        acc + Number(node.connections.length > (node.isStart ? 1 : 2)),
+      0,
+    );
+
     return {
       branches,
       nodes: nodes.length,
+      junctions,
     };
   },
 });
