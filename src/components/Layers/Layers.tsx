@@ -44,6 +44,12 @@ const Layers = () => {
         checked={layers.depth}
         onChange={() => handleOnChange('depth')}
       />
+      <Checkbox
+        label="Paths length"
+        name="pathLength"
+        checked={layers.pathLength}
+        onChange={() => handleOnChange('pathLength')}
+      />
     </div>
   );
 };

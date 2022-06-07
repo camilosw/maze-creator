@@ -21,8 +21,7 @@ const makeLine = (
   previousNodeId?: string,
 ): Line[] => {
   const hasBranch =
-    currentNode.connections.length >= 3 ||
-    (currentNode.isStart && currentNode.connections.length >= 2);
+    currentNode.connections.length >= (currentNode.isStart ? 2 : 3);
   let nextColorId = colorId;
   const lines = currentNode.connections
     .filter((connection) => connection !== previousNodeId)

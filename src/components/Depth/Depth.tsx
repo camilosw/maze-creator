@@ -18,6 +18,7 @@ const DepthDraw = () => {
           width={gridSpacing}
           height={gridSpacing}
           fill={node.color}
+          shapeRendering="crispEdges"
         />
       ))}
     </>
