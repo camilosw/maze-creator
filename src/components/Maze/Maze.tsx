@@ -1,5 +1,6 @@
 import { useRecoilValue } from 'recoil';
 
+import DeadEndLength from 'components/DeadEndLength';
 import Depth from 'components/Depth';
 import Grid from 'components/Grid';
 import Lines from 'components/Lines';
@@ -16,6 +17,7 @@ const Maze = () => {
       <Grid />
       <Depth />
       <PathLength />
+      <DeadEndLength />
       <Lines />
       <Nodes />
       <Walls />

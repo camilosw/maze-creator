@@ -11,6 +11,10 @@ const Layers = () => {
     setLayers({ ...layers, [name]: !layers[name] });
   };
 
+  const handleOnValueChange = (name: keyof typeof layers, value: string) => {
+    setLayers({ ...layers, [name]: value });
+  };
+
   return (
     <div>
       <Checkbox
@@ -31,6 +35,28 @@ const Layers = () => {
         checked={layers.paths}
         onChange={() => handleOnChange('paths')}
       />
+      {layers.paths && (
+        <>
+          <label htmlFor="pathsColor">
+            <input
+              type="radio"
+              name="pathsColor"
+              checked={layers.pathsColor === 'bw'}
+              onChange={() => handleOnValueChange('pathsColor', 'bw')}
+            />
+            <span>BW</span>
+          </label>
+          <label htmlFor="pathsColor">
+            <input
+              type="radio"
+              name="pathsColor"
+              checked={layers.pathsColor === 'color'}
+              onChange={() => handleOnValueChange('pathsColor', 'color')}
+            />
+            <span>Color</span>
+          </label>
+        </>
+      )}
       <Checkbox
         label="nodes"
         name="nodePoints"
@@ -49,6 +75,12 @@ const Layers = () => {
         name="pathLength"
         checked={layers.pathLength}
         onChange={() => handleOnChange('pathLength')}
+      />
+      <Checkbox
+        label="Dead ends length"
+        name="deadEndLength"
+        checked={layers.deadEndLength}
+        onChange={() => handleOnChange('deadEndLength')}
       />
     </div>
   );

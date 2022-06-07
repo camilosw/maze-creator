@@ -3,23 +3,23 @@ import chroma from 'chroma-js';
 import { useRecoilValue } from 'recoil';
 
 import { configAtom, layersAtom } from 'services/config';
-import { pathLengthSelector } from 'services/maze/pathLegthSelector';
+import { deadEndLengthSelector } from 'services/maze/deadEndLengthSelector';
 
-const PathLengthDraw = () => {
-  const pathLength = useRecoilValue(pathLengthSelector);
+const DeadEndLengthDraw = () => {
+  const deadEndLength = useRecoilValue(deadEndLengthSelector);
   const { gridSpacing } = useRecoilValue(configAtom);
 
   const maxLength =
-    pathLength?.reduce((acc, node) => Math.max(acc, node.length), 0) || 0;
+    deadEndLength?.reduce((acc, node) => Math.max(acc, node.length), 0) || 0;
 
   const colorScale = chroma
     .scale(['red', 'grey', 'blue'])
     .mode('lab')
-    .domain([1, maxLength]);
+    .domain([1, Math.max(10, maxLength)]);
 
   return (
     <>
-      {pathLength
+      {deadEndLength
         ?.filter((node) => node.length)
         .map((node) => (
           <rect
@@ -36,12 +36,12 @@ const PathLengthDraw = () => {
   );
 };
 
-const PathLength = () => {
-  const { pathLength } = useRecoilValue(layersAtom);
+const DeadEndLength = () => {
+  const { deadEndLength } = useRecoilValue(layersAtom);
 
-  if (!pathLength) return null;
+  if (!deadEndLength) return null;
 
-  return <PathLengthDraw />;
+  return <DeadEndLengthDraw />;
 };
 
-export default PathLength;
+export default DeadEndLength;

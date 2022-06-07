@@ -6,6 +6,7 @@ import { linesSelector } from 'services/maze';
 
 const DrawLines = () => {
   const lines = useRecoilValue(linesSelector);
+  const { pathsColor } = useRecoilValue(layersAtom);
 
   return (
     <>
@@ -22,7 +23,7 @@ const DrawLines = () => {
         <line
           key={`${line.x1}${line.y1}${line.x2}${line.y2}`}
           {...line}
-          stroke={line.color}
+          stroke={pathsColor === 'color' ? line.color : '#212121'}
           strokeWidth={line.width}
           strokeLinecap="round"
         />

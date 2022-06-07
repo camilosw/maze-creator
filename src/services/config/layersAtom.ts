@@ -5,8 +5,10 @@ type Layers = {
   walls: boolean;
   nodePoints: boolean;
   paths: boolean;
+  pathsColor: 'bw' | 'color';
   depth: boolean;
   pathLength: boolean;
+  deadEndLength: boolean;
 };
 
 export const layersAtom = atom<Layers>({
@@ -16,7 +18,9 @@ export const layersAtom = atom<Layers>({
     walls: true,
     nodePoints: true,
     paths: true,
+    pathsColor: 'color',
     depth: false,
     pathLength: false,
+    deadEndLength: false,
   },
 });
