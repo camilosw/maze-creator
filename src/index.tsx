@@ -4,10 +4,11 @@ import { RecoilRoot } from 'recoil';
 
 import Layers from 'components/Layers';
 import Maze from 'components/Maze';
+import Setup from 'components/Setup';
 import Stats from 'components/Stats';
 import Toolbar from 'components/Toolbar';
 import reportWebVitals from './reportWebVitals';
-import './index.css';
+import './index.scss';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
@@ -18,6 +19,7 @@ root.render(
       <Toolbar />
       <Layers />
       <Stats />
+      <Setup />
       <Maze />
     </RecoilRoot>
   </React.StrictMode>,

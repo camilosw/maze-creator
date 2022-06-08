@@ -13,7 +13,10 @@ const Maze = () => {
   const config = useRecoilValue(configAtom);
 
   return (
-    <svg width={config.width} height={config.height}>
+    <svg
+      width={config.width * config.gridSpacing}
+      height={config.height * config.gridSpacing}
+    >
       <Grid />
       <Depth />
       <PathLength />

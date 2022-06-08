@@ -10,13 +10,11 @@ const Grid = () => {
   const { width, height, gridSpacing } = useRecoilValue(configAtom);
   const createNode = useCreateNode();
 
-  const points = Array.from(
-    { length: Math.floor(height / gridSpacing) },
-    (_, i) =>
-      Array.from({ length: Math.floor(width / gridSpacing) }, (_, j) => ({
-        x: j * gridSpacing + gridSpacing / 2,
-        y: i * gridSpacing + gridSpacing / 2,
-      })),
+  const points = Array.from({ length: Math.floor(height) }, (_, i) =>
+    Array.from({ length: Math.floor(width) }, (_, j) => ({
+      x: j * gridSpacing + gridSpacing / 2,
+      y: i * gridSpacing + gridSpacing / 2,
+    })),
   );
 
   return (

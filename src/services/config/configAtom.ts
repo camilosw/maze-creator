@@ -9,8 +9,8 @@ type Config = {
 export const configAtom = atom<Config>({
   key: 'config',
   default: {
-    width: 1000,
-    height: 500,
-    gridSpacing: 25,
+    width: 10,
+    height: 10,
+    gridSpacing: 20,
   },
 });
