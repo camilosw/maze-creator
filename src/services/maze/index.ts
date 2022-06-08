@@ -10,4 +10,5 @@ export * from './useCalculateDepth';
 export * from './useCalculateExitPath';
 export * from './useClearPath';
 export * from './useCreateNode';
+export * from './useDeleteMaze';
 export * from './useDeleteNode';

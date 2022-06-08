@@ -8,6 +8,7 @@ import {
   useCalculateDepth,
   useCalculateExitPath,
   useClearPath,
+  useDeleteMaze,
   useDeleteNode,
 } from 'services/maze';
 
@@ -18,7 +19,12 @@ const Toolbar = () => {
   const clearPath = useClearPath();
   const calculateExitPath = useCalculateExitPath();
   const calculateDepth = useCalculateDepth();
+  const deleteMaze = useDeleteMaze();
   const deleteNode = useDeleteNode();
+
+  const handleNew = () => {
+    deleteMaze();
+  };
 
   const handleSetStart = () => {
     if (!activeNode) return;
@@ -42,6 +48,7 @@ const Toolbar = () => {
 
   return (
     <div>
+      <button onClick={handleNew}>New</button>
       <button onClick={handleSetStart}>Set start</button>
       <button onClick={handleSetEnd}>Set end</button>
       <button onClick={handleDeleteNode}>Delete node</button>
