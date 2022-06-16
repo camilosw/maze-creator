@@ -2,7 +2,7 @@ import React from 'react';
 import chroma from 'chroma-js';
 import { useRecoilValue } from 'recoil';
 
-import { configAtom, layersAtom } from 'services/config';
+import { configAtom, HighlightOption, layersAtom } from 'services/config';
 import { pathLengthSelector } from 'services/maze/pathLegthSelector';
 
 const PathLengthDraw = () => {
@@ -37,9 +37,9 @@ const PathLengthDraw = () => {
 };
 
 const PathLength = () => {
-  const { pathLength } = useRecoilValue(layersAtom);
+  const { highlight } = useRecoilValue(layersAtom);
 
-  if (!pathLength) return null;
+  if (highlight !== HighlightOption.PathLength) return null;
 
   return <PathLengthDraw />;
 };

@@ -3,7 +3,7 @@ import { useRecoilState } from 'recoil';
 
 import Checkbox from 'components/Checkbox/Checkbox';
 import Radio from 'components/Radio';
-import { layersAtom } from 'services/config';
+import { ColorOption, HighlightOption, layersAtom } from 'services/config';
 import cn from './Layers.module.scss';
 
 const Layers = () => {
@@ -13,8 +13,13 @@ const Layers = () => {
     setLayers({ ...layers, [name]: !layers[name] });
   };
 
-  const handleOnValueChange = (name: keyof typeof layers, value: string) => {
-    setLayers({ ...layers, [name]: value });
+  const handleOnColorChange = (value: ColorOption) => {
+    setLayers({ ...layers, pathsColor: value });
+  };
+
+  const handleOnHighlightChange = (value: HighlightOption) => {
+    const newValue = value === layers.highlight ? null : value;
+    setLayers({ ...layers, highlight: newValue });
   };
 
   return (
@@ -49,14 +54,14 @@ const Layers = () => {
           <Radio
             label="Color"
             name="pathsColor"
-            checked={layers.pathsColor === 'color'}
-            onChange={() => handleOnValueChange('pathsColor', 'color')}
+            checked={layers.pathsColor === ColorOption.Color}
+            onChange={() => handleOnColorChange(ColorOption.Color)}
           />
           <Radio
             label="BW"
             name="pathsColor"
-            checked={layers.pathsColor === 'bw'}
-            onChange={() => handleOnValueChange('pathsColor', 'bw')}
+            checked={layers.pathsColor === ColorOption.BW}
+            onChange={() => handleOnColorChange(ColorOption.BW)}
           />
         </div>
       )}
@@ -65,20 +70,20 @@ const Layers = () => {
       <Checkbox
         label="Depth"
         name="depth"
-        checked={layers.depth}
-        onChange={() => handleOnChange('depth')}
+        checked={layers.highlight === HighlightOption.Depth}
+        onChange={() => handleOnHighlightChange(HighlightOption.Depth)}
       />
       <Checkbox
         label="Paths length"
         name="pathLength"
-        checked={layers.pathLength}
-        onChange={() => handleOnChange('pathLength')}
+        checked={layers.highlight === HighlightOption.PathLength}
+        onChange={() => handleOnHighlightChange(HighlightOption.PathLength)}
       />
       <Checkbox
         label="Dead ends length"
         name="deadEndLength"
-        checked={layers.deadEndLength}
-        onChange={() => handleOnChange('deadEndLength')}
+        checked={layers.highlight === HighlightOption.DeadEndLength}
+        onChange={() => handleOnHighlightChange(HighlightOption.DeadEndLength)}
       />
     </div>
   );

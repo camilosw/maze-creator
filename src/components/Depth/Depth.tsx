@@ -2,7 +2,7 @@ import React from 'react';
 import chroma from 'chroma-js';
 import { useRecoilValue } from 'recoil';
 
-import { configAtom, layersAtom } from 'services/config';
+import { configAtom, HighlightOption, layersAtom } from 'services/config';
 import { nodesSelector } from 'services/maze';
 
 const DepthDraw = () => {
@@ -35,9 +35,9 @@ const DepthDraw = () => {
 };
 
 const Depth = () => {
-  const { depth } = useRecoilValue(layersAtom);
+  const { highlight } = useRecoilValue(layersAtom);
 
-  if (!depth) return null;
+  if (highlight !== HighlightOption.Depth) return null;
 
   return <DepthDraw />;
 };

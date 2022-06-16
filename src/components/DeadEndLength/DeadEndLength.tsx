@@ -2,7 +2,7 @@ import React from 'react';
 import chroma from 'chroma-js';
 import { useRecoilValue } from 'recoil';
 
-import { configAtom, layersAtom } from 'services/config';
+import { configAtom, HighlightOption, layersAtom } from 'services/config';
 import { deadEndLengthSelector } from 'services/maze/deadEndLengthSelector';
 
 const DeadEndLengthDraw = () => {
@@ -37,9 +37,9 @@ const DeadEndLengthDraw = () => {
 };
 
 const DeadEndLength = () => {
-  const { deadEndLength } = useRecoilValue(layersAtom);
+  const { highlight } = useRecoilValue(layersAtom);
 
-  if (!deadEndLength) return null;
+  if (highlight !== HighlightOption.DeadEndLength) return null;
 
   return <DeadEndLengthDraw />;
 };

@@ -1,14 +1,14 @@
 import { atom } from 'recoil';
 
+import { HighlightOption } from './types';
+
 type Layers = {
   grid: boolean;
   walls: boolean;
   nodePoints: boolean;
   paths: boolean;
   pathsColor: 'bw' | 'color';
-  depth: boolean;
-  pathLength: boolean;
-  deadEndLength: boolean;
+  highlight: null | HighlightOption;
 };
 
 export const layersAtom = atom<Layers>({
@@ -19,8 +19,6 @@ export const layersAtom = atom<Layers>({
     nodePoints: true,
     paths: true,
     pathsColor: 'color',
-    depth: false,
-    pathLength: false,
-    deadEndLength: false,
+    highlight: null,
   },
 });
