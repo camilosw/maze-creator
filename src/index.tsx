@@ -2,13 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RecoilRoot } from 'recoil';
 
-import Layers from 'components/Layers';
-import Maze from 'components/Maze';
-import Setup from 'components/Setup';
-import Stats from 'components/Stats';
-import Toolbar from 'components/Toolbar';
+import App from 'components/App';
 import reportWebVitals from './reportWebVitals';
-import './index.scss';
+import 'styles/index.scss';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
@@ -16,11 +12,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <RecoilRoot>
-      <Toolbar />
-      <Layers />
-      <Stats />
-      <Setup />
-      <Maze />
+      <App />
     </RecoilRoot>
   </React.StrictMode>,
 );

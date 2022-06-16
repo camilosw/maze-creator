@@ -1,0 +1,33 @@
+@import 'styles/variables';
+
+.root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.toolbar {
+  border-bottom: 1px solid $black;
+  padding: 0.5rem;
+}
+.main {
+  flex: auto;
+  display: flex;
+  overflow: auto;
+}
+.content {
+  flex: 1;
+  background-color: $gray-200;
+  display: flex;
+}
+.contentInner {
+  margin: auto;
+}
+.sidebar {
+  border-left: 1px solid $black;
+  padding: 1rem;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}

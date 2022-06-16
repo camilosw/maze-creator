@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useRecoilState } from 'recoil';
 
 import { configAtom } from 'services/config';
+import cn from './Setup.module.scss';
 
 type FormData = {
   width: number;
@@ -11,7 +12,11 @@ type FormData = {
   gridSpacing: number;
 };
 
-const Setup = () => {
+type Props = {
+  onSetup(): void;
+};
+
+const Setup = ({ onSetup }: Props) => {
   const [config, setConfig] = useRecoilState(configAtom);
   const {
     register,
@@ -27,11 +32,13 @@ const Setup = () => {
 
   const onHandleSubmit = (value: FormData) => {
     setConfig((currentConfig) => ({ ...currentConfig, ...value }));
+    onSetup();
   };
 
   return (
-    <Form onSubmit={handleSubmit(onHandleSubmit)}>
-      <Form.Group controlId="width">
+    <Form onSubmit={handleSubmit(onHandleSubmit)} className={cn.setup}>
+      <div className="title">Create new maze</div>
+      <Form.Group controlId="width" className={cn.formGroup}>
         <Form.Label>Width</Form.Label>
         <Form.Control
           {...register('width', {
@@ -51,7 +58,7 @@ const Setup = () => {
           </Form.Control.Feedback>
         )}
       </Form.Group>
-      <Form.Group controlId="width">
+      <Form.Group controlId="width" className={cn.formGroup}>
         <Form.Label>Height</Form.Label>
         <Form.Control
           {...register('height', {
@@ -71,7 +78,7 @@ const Setup = () => {
           </Form.Control.Feedback>
         )}
       </Form.Group>
-      <Form.Group controlId="width">
+      <Form.Group controlId="width" className={cn.formGroup}>
         <Form.Label>Grid spacing</Form.Label>
         <Form.Control
           {...register('gridSpacing', {
@@ -91,9 +98,11 @@ const Setup = () => {
           </Form.Control.Feedback>
         )}
       </Form.Group>
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
+      <div className={cn.actions}>
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+      </div>
     </Form>
   );
 };

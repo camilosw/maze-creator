@@ -1,6 +1,5 @@
 // Configuration
-@import '~bootstrap/scss/functions';
-@import '~bootstrap/scss/variables';
+@import './variables';
 @import '~bootstrap/scss/mixins';
 // @import '~bootstrap/scss/utilities';
 
@@ -43,6 +42,4 @@
 // Utilities
 // @import '~bootstrap/scss/utilities/api';
 
-:root {
-  --black: #212121;
-}
+@import './styles';

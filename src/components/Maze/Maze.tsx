@@ -8,23 +8,28 @@ import Nodes from 'components/Nodes';
 import PathLength from 'components/PathLength';
 import Walls from 'components/Walls';
 import { configAtom } from 'services/config';
+import cn from './Maze.module.scss';
 
 const Maze = () => {
   const config = useRecoilValue(configAtom);
 
   return (
-    <svg
-      width={config.width * config.gridSpacing}
-      height={config.height * config.gridSpacing}
-    >
-      <Grid />
-      <Depth />
-      <PathLength />
-      <DeadEndLength />
-      <Lines />
-      <Nodes />
-      <Walls />
-    </svg>
+    <div className={cn.maze}>
+      <svg
+        width={config.width * config.gridSpacing + 4}
+        height={config.height * config.gridSpacing + 4}
+      >
+        <g transform="translate(2,2)">
+          <Grid />
+          <Depth />
+          <PathLength />
+          <DeadEndLength />
+          <Lines />
+          <Nodes />
+          <Walls />
+        </g>
+      </svg>
+    </div>
   );
 };
 

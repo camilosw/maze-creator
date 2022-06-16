@@ -2,7 +2,9 @@ import React from 'react';
 import { useRecoilState } from 'recoil';
 
 import Checkbox from 'components/Checkbox/Checkbox';
+import Radio from 'components/Radio';
 import { layersAtom } from 'services/config';
+import cn from './Layers.module.scss';
 
 const Layers = () => {
   const [layers, setLayers] = useRecoilState(layersAtom);
@@ -17,53 +19,49 @@ const Layers = () => {
 
   return (
     <div>
+      <div className="title">Layers</div>
       <Checkbox
-        label="grid"
+        label="Grid"
         name="grid"
         checked={layers.grid}
         onChange={() => handleOnChange('grid')}
       />
       <Checkbox
-        label="walls"
+        label="Nodes"
+        name="nodePoints"
+        checked={layers.nodePoints}
+        onChange={() => handleOnChange('nodePoints')}
+      />
+      <Checkbox
+        label="Walls"
         name="walls"
         checked={layers.walls}
         onChange={() => handleOnChange('walls')}
       />
       <Checkbox
-        label="paths"
+        label="Paths"
         name="paths"
         checked={layers.paths}
         onChange={() => handleOnChange('paths')}
       />
       {layers.paths && (
-        <>
-          <label htmlFor="pathsColor">
-            <input
-              type="radio"
-              name="pathsColor"
-              checked={layers.pathsColor === 'bw'}
-              onChange={() => handleOnValueChange('pathsColor', 'bw')}
-            />
-            <span>BW</span>
-          </label>
-          <label htmlFor="pathsColor">
-            <input
-              type="radio"
-              name="pathsColor"
-              checked={layers.pathsColor === 'color'}
-              onChange={() => handleOnValueChange('pathsColor', 'color')}
-            />
-            <span>Color</span>
-          </label>
-        </>
+        <div className={cn.radio}>
+          <Radio
+            label="Color"
+            name="pathsColor"
+            checked={layers.pathsColor === 'color'}
+            onChange={() => handleOnValueChange('pathsColor', 'color')}
+          />
+          <Radio
+            label="BW"
+            name="pathsColor"
+            checked={layers.pathsColor === 'bw'}
+            onChange={() => handleOnValueChange('pathsColor', 'bw')}
+          />
+        </div>
       )}
-      <Checkbox
-        label="nodes"
-        name="nodePoints"
-        checked={layers.nodePoints}
-        onChange={() => handleOnChange('nodePoints')}
-      />
-      <h2>Descriptors</h2>
+
+      <div className="title">Highlight</div>
       <Checkbox
         label="Depth"
         name="depth"
