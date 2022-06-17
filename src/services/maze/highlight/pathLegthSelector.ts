@@ -1,10 +1,11 @@
+import chroma from 'chroma-js';
 import { GetRecoilValue, selector } from 'recoil';
 
 import { configAtom } from 'services/config';
-import { nodeAtom } from './nodeAtom';
-import { nodesAtom } from './nodesAtom';
-import { startNodeAtom } from './startNodeAtom';
-import { MazeNode } from './types';
+import { nodeAtom } from '../nodeAtom';
+import { nodesAtom } from '../nodesAtom';
+import { startNodeAtom } from '../startNodeAtom';
+import { MazeNode } from '../types';
 
 type LengthNode = {
   x: number;
@@ -59,5 +60,25 @@ export const pathLengthSelector = selector({
     if (startNode) {
       return visitNodes(startNode, get, gridSpacing, 0);
     }
+  },
+});
+
+export const pathLengthColorScaleSelector = selector({
+  key: 'pathLengthSelectorScaleSelector',
+  get: ({ get }) => {
+    const maxLength =
+      get(pathLengthSelector)?.reduce(
+        (acc, node) => Math.max(acc, node.length),
+        0,
+      ) || 0;
+
+    const domain: [number, number] = [1, maxLength];
+
+    const colorScale = chroma
+      .scale(['red', 'grey', 'blue'])
+      .mode('lab')
+      .domain(domain);
+
+    return { colorScale, domain };
   },
 });

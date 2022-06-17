@@ -3,7 +3,7 @@ import { useRecoilState } from 'recoil';
 
 import Checkbox from 'components/Checkbox/Checkbox';
 import Radio from 'components/Radio';
-import { ColorOption, HighlightOption, layersAtom } from 'services/config';
+import { ColorOption, layersAtom } from 'services/config';
 import cn from './Layers.module.scss';
 
 const Layers = () => {
@@ -15,11 +15,6 @@ const Layers = () => {
 
   const handleOnColorChange = (value: ColorOption) => {
     setLayers({ ...layers, pathsColor: value });
-  };
-
-  const handleOnHighlightChange = (value: HighlightOption) => {
-    const newValue = value === layers.highlight ? null : value;
-    setLayers({ ...layers, highlight: newValue });
   };
 
   return (
@@ -65,26 +60,6 @@ const Layers = () => {
           />
         </div>
       )}
-
-      <div className="title">Highlight</div>
-      <Checkbox
-        label="Depth"
-        name="depth"
-        checked={layers.highlight === HighlightOption.Depth}
-        onChange={() => handleOnHighlightChange(HighlightOption.Depth)}
-      />
-      <Checkbox
-        label="Paths length"
-        name="pathLength"
-        checked={layers.highlight === HighlightOption.PathLength}
-        onChange={() => handleOnHighlightChange(HighlightOption.PathLength)}
-      />
-      <Checkbox
-        label="Dead ends length"
-        name="deadEndLength"
-        checked={layers.highlight === HighlightOption.DeadEndLength}
-        onChange={() => handleOnHighlightChange(HighlightOption.DeadEndLength)}
-      />
     </div>
   );
 };

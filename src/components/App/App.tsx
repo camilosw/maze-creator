@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import Highlight from 'components/Highlight';
 import Layers from 'components/Layers';
 import Maze from 'components/Maze';
 import Setup from 'components/Setup';
@@ -25,6 +26,7 @@ const App = () => {
           <div className={cn.sidebar}>
             <Stats />
             <Layers />
+            <Highlight />
           </div>
         )}
       </div>

@@ -1,10 +1,11 @@
+import chroma from 'chroma-js';
 import { GetRecoilValue, selector } from 'recoil';
 
 import { configAtom } from 'services/config';
-import { nodeAtom } from './nodeAtom';
-import { nodesAtom } from './nodesAtom';
-import { startNodeAtom } from './startNodeAtom';
-import { MazeNode } from './types';
+import { nodeAtom } from '../nodeAtom';
+import { nodesAtom } from '../nodesAtom';
+import { startNodeAtom } from '../startNodeAtom';
+import { MazeNode } from '../types';
 
 type LengthNode = {
   x: number;
@@ -40,7 +41,7 @@ const visitNodes = (
       x: currentNode.x - gridSpacing / 2,
       y: currentNode.y - gridSpacing / 2,
       length:
-        isBranch || nextNodes[0]?.length === 0
+        isBranch || currentNode.isEnd || nextNodes[0]?.length === 0
           ? 0
           : Math.max(
               nextNodes[0]?.length || 0,
@@ -60,5 +61,25 @@ export const deadEndLengthSelector = selector({
     if (startNode) {
       return visitNodes(startNode, get, gridSpacing, 0);
     }
+  },
+});
+
+export const deadEndLenghtColorScaleSelector = selector({
+  key: 'deadEndLenghtColorScaleSelector',
+  get: ({ get }) => {
+    const maxLength =
+      get(deadEndLengthSelector)?.reduce(
+        (acc, node) => Math.max(acc, node.length),
+        0,
+      ) || 0;
+
+    const domain: [number, number] = [1, Math.max(10, maxLength)];
+
+    const colorScale = chroma
+      .scale(['red', 'grey', 'blue'])
+      .mode('lab')
+      .domain(domain);
+
+    return { colorScale, domain };
   },
 });

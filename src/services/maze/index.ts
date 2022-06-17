@@ -1,5 +1,6 @@
 export * from './activeNodeAtom';
 export * from './endNodeAtom';
+export * from './highlight';
 export * from './linesSelector';
 export * from './nodeAtom';
 export * from './nodesAtom';
