@@ -7,16 +7,16 @@ type Props = Omit<
     React.InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
   >,
-  'id' | 'type'
+  'type'
 > & {
   name: string;
   label: React.ReactNode;
 };
 
-const Radio = ({ name, label, className, ...rest }: Props) => {
+const Radio = ({ id, name, label, className, ...rest }: Props) => {
   return (
-    <label htmlFor={name} className={cns(cn.label, className)}>
-      <input {...rest} type="radio" name={name} id={name} />
+    <label htmlFor={id} className={cns(cn.label, className)}>
+      <input {...rest} type="radio" name={name} id={id} />
       <span>{label}</span>
     </label>
   );

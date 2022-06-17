@@ -49,12 +49,14 @@ const Layers = () => {
           <Radio
             label="Color"
             name="pathsColor"
+            id="pathsColorColor"
             checked={layers.pathsColor === ColorOption.Color}
             onChange={() => handleOnColorChange(ColorOption.Color)}
           />
           <Radio
             label="BW"
             name="pathsColor"
+            id="pathsColorBW"
             checked={layers.pathsColor === ColorOption.BW}
             onChange={() => handleOnColorChange(ColorOption.BW)}
           />
