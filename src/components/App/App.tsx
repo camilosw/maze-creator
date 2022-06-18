@@ -6,6 +6,7 @@ import Maze from 'components/Maze';
 import Setup from 'components/Setup';
 import Stats from 'components/Stats';
 import Toolbar from 'components/Toolbar';
+import { ReactComponent as Heart } from '../../assets/heart.svg';
 import cn from './App.module.scss';
 
 const App = () => {
@@ -29,6 +30,13 @@ const App = () => {
             <Highlight />
           </div>
         )}
+      </div>
+      <div className={cn.footer}>
+        Built with
+        <Heart className={cn.heart} /> by
+        <a href="https://camilomejia.dev/" className={cn.link}>
+          Camilo Mejía
+        </a>
       </div>
     </div>
   );
