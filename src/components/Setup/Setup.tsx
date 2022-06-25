@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
+import ReactGA from 'react-ga';
 import { useForm } from 'react-hook-form';
 import { useRecoilState } from 'recoil';
 
@@ -33,6 +34,11 @@ const Setup = ({ onSetup }: Props) => {
   const onHandleSubmit = (value: FormData) => {
     setConfig((currentConfig) => ({ ...currentConfig, ...value }));
     onSetup();
+    ReactGA.event({
+      category: 'Maze',
+      action: 'New',
+      label: `${value.width}x${value.height}-${value.gridSpacing}`,
+    });
   };
 
   return (

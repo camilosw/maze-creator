@@ -1,10 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import ReactGA from 'react-ga';
 import { RecoilRoot } from 'recoil';
 
 import App from 'components/App';
 import reportWebVitals from './reportWebVitals';
 import 'styles/index.scss';
+
+ReactGA.initialize('UA-232435856-1', {
+  gaOptions: {
+    storage: 'none',
+    storeGac: false,
+  },
+});
+ReactGA.set({ anonymizeIp: true });
+ReactGA.pageview(window.location.pathname);
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
