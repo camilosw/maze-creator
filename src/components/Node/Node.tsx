@@ -1,9 +1,9 @@
 import cns from 'classnames';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
-import { layersAtom } from 'services/config';
+import { configAtom, layersAtom } from 'services/config';
 import { activeNodeAtom, nodeAtom } from 'services/maze';
-import cn from './Node.module.css';
+import cn from './Node.module.scss';
 
 type Props = {
   id: string;
@@ -12,6 +12,7 @@ type Props = {
 const Node = ({ id }: Props) => {
   const { nodePoints } = useRecoilValue(layersAtom);
   const node = useRecoilValue(nodeAtom(id));
+  const { gridSpacing } = useRecoilValue(configAtom);
   const setActiveNode = useSetRecoilState(activeNodeAtom);
 
   return (
@@ -26,10 +27,11 @@ const Node = ({ id }: Props) => {
         })}
       />
 
-      <circle
-        cx={node.x}
-        cy={node.y}
-        r="8"
+      <rect
+        x={node.x - gridSpacing / 2}
+        y={node.y - gridSpacing / 2}
+        width={gridSpacing}
+        height={gridSpacing}
         className={cn.transparent}
         onClick={() => setActiveNode(node)}
       />

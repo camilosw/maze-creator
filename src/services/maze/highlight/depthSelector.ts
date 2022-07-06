@@ -13,7 +13,7 @@ export const depthColorScaleSelector = selector({
 
     const domain: [number, number] = [1, biggestDepth];
 
-    const colorScale = chroma.scale(['#0277BD', '#F44336']).domain(domain);
+    const colorScale = chroma.scale(['#3d8bfd', '#dc3545']).domain(domain);
 
     return { colorScale, domain };
   },

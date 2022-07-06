@@ -1,6 +1,6 @@
 import cns from 'classnames';
 
-import cn from './Radio.module.css';
+import cn from './Radio.module.scss';
 
 type Props = Omit<
   React.DetailedHTMLProps<

@@ -30,7 +30,7 @@ const DrawWalls = () => {
           x2={wall[2]}
           y2={wall[3]}
           strokeWidth="2"
-          stroke="#212121"
+          stroke="#212529"
           strokeLinecap="round"
         />
       ))}

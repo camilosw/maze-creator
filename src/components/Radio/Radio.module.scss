@@ -1,3 +1,5 @@
+@import 'styles/variables';
+
 .label {
   display: grid;
   grid-template-columns: 1rem auto;
@@ -23,7 +25,7 @@
   border-radius: 0.25rem;
   transform: scale(0);
   transition: 120ms transform ease-in-out;
-  box-shadow: inset 1em 1em var(--black);
+  box-shadow: inset 1em 1em $black;
 }
 .label input[type='radio']:checked::before {
   transform: scale(1);

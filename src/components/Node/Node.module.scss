@@ -1,5 +1,7 @@
+@import 'styles/variables';
+
 .node {
-  fill: #455a64;
+  fill: $gray-600;
   opacity: 0.75;
 }
 .node:hover {
@@ -9,13 +11,13 @@
   fill: none;
 }
 .active {
-  fill: #ff7043;
+  fill: $orange;
   stroke: #ffffff;
-  filter: drop-shadow(0 0 0.25rem rgba(255, 0, 0, 1));
+  filter: drop-shadow(0 0 0.25rem $red);
 }
 .transparent {
   opacity: 0;
-  fill: rgba(183, 39, 39, 0.25);
+  fill: rgba(220, 53, 69, 0.25);
   transition: opacity 0.25s ease;
 }
 .transparent:hover {

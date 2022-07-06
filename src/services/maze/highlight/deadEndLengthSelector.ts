@@ -76,7 +76,7 @@ export const deadEndLenghtColorScaleSelector = selector({
     const domain: [number, number] = [1, Math.max(10, maxLength)];
 
     const colorScale = chroma
-      .scale(['red', 'grey', 'blue'])
+      .scale(['#dc3545', '#adb5bd', '#3d8bfd'])
       .mode('lab')
       .domain(domain);
 
