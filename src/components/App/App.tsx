@@ -34,7 +34,12 @@ const App = () => {
       <div className={cn.footer}>
         Built with
         <Heart className={cn.heart} /> by
-        <a href="https://camilomejia.dev/" className={cn.link}>
+        <a
+          href="https://camilomejia.dev/"
+          className={cn.link}
+          target="_blank"
+          rel="noreferrer"
+        >
           Camilo Mejía
         </a>
       </div>
