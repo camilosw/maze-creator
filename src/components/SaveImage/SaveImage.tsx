@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import ReactDOM from 'react-dom';
+import ReactGA from 'react-ga';
 import { useRecoilValue } from 'recoil';
 
 import { ReactComponent as Download } from 'assets/download.svg';
@@ -17,16 +18,12 @@ const CreateMazeImage = ({ onFinish }: CreateMazeImagePros) => {
   const width = config.width * config.gridSpacing + 4;
   const height = config.height * config.gridSpacing + 4;
 
-  console.count('render create maze image');
-
   useEffect(() => {
     if (isReRender.current) return;
     isReRender.current = true;
-    console.log('download');
+
     const maze = document.getElementById('maze-save');
     if (!maze) return;
-
-    console.dir(maze);
 
     const url = URL.createObjectURL(
       new Blob([maze.outerHTML], { type: 'image/svg+xml;charset=utf-8' }),
@@ -34,14 +31,11 @@ const CreateMazeImage = ({ onFinish }: CreateMazeImagePros) => {
 
     const mazeImg = document.createElement('img');
     mazeImg.onload = () => {
-      console.log(url);
-
       const canvas = document.createElement('canvas');
       canvas.width = maze.clientWidth;
       canvas.height = maze.clientHeight;
       canvas.getContext('2d')?.drawImage(mazeImg, 0, 0);
       const img = canvas.toDataURL('image/png');
-      console.log(img);
 
       const link = document.createElement('a');
       link.download = 'maze.png';
@@ -50,7 +44,13 @@ const CreateMazeImage = ({ onFinish }: CreateMazeImagePros) => {
       link.href = img;
       link.click();
       link.remove();
-      console.log('end');
+
+      ReactGA.event({
+        category: 'Save maze',
+        action: 'save image',
+        label: `save-image-${config.width}x${config.height}-${config.gridSpacing}`,
+      });
+
       onFinish();
     };
     mazeImg.src = url;
