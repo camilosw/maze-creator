@@ -38,10 +38,14 @@ const DrawWalls = () => {
   );
 };
 
-const Walls = () => {
+type Props = {
+  isDownloadImage?: boolean;
+};
+
+const Walls = ({ isDownloadImage = false }: Props) => {
   const { walls: wallsLayer } = useRecoilValue(layersAtom);
 
-  if (!wallsLayer) return null;
+  if (!(isDownloadImage || wallsLayer)) return null;
 
   return <DrawWalls />;
 };

@@ -12,13 +12,12 @@ import cn from './Maze.module.scss';
 
 const Maze = () => {
   const config = useRecoilValue(configAtom);
+  const width = config.width * config.gridSpacing + 4;
+  const height = config.height * config.gridSpacing + 4;
 
   return (
     <div className={cn.maze}>
-      <svg
-        width={config.width * config.gridSpacing + 4}
-        height={config.height * config.gridSpacing + 4}
-      >
+      <svg width={width} height={height}>
         <g transform="translate(2,2)">
           <Grid />
           <Depth />

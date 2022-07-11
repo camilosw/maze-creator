@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRecoilState } from 'recoil';
 
 import Highlight from 'components/Highlight';
 import Layers from 'components/Layers';
@@ -6,11 +6,12 @@ import Maze from 'components/Maze';
 import Setup from 'components/Setup';
 import Stats from 'components/Stats';
 import Toolbar from 'components/Toolbar';
+import { setupAtom } from 'services/config';
 import { ReactComponent as Heart } from '../../assets/heart.svg';
 import cn from './App.module.scss';
 
 const App = () => {
-  const [setup, setSetup] = useState(true);
+  const [setup, setSetup] = useRecoilState(setupAtom);
 
   return (
     <div className={cn.root}>

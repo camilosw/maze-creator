@@ -1,6 +1,11 @@
 import { Button } from 'react-bootstrap';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
+import { ReactComponent as BoxArrowInRight } from 'assets/boxArrowInRight.svg';
+import { ReactComponent as BoxArrowRight } from 'assets/boxArrowRight.svg';
+import { ReactComponent as FileEarmark } from 'assets/fileEarmark.svg';
+import { ReactComponent as XSquare } from 'assets/xSquare.svg';
+import SaveImage from 'components/SaveImage';
 import {
   activeNodeAtom,
   endNodeAtom,
@@ -11,10 +16,6 @@ import {
   useDeleteMaze,
   useDeleteNode,
 } from 'services/maze';
-import { ReactComponent as BoxArrowInRight } from '../../assets/boxArrowInRight.svg';
-import { ReactComponent as BoxArrowRight } from '../../assets/boxArrowRight.svg';
-import { ReactComponent as FileEarmark } from '../../assets/fileEarmark.svg';
-import { ReactComponent as XSquare } from '../../assets/xSquare.svg';
 import cn from './Toolbar.module.scss';
 
 type Props = {
@@ -62,6 +63,7 @@ const Toolbar = ({ onNew }: Props) => {
         <Button variant="light" onClick={handleNew} title="Create new maze">
           <FileEarmark />
         </Button>
+        <SaveImage />
       </div>
 
       <div className={cn.group}>
